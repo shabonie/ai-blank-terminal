@@ -60,17 +60,6 @@ python3 ai_blank_terminal.py
 GUI出て、プロンプト入力して生成できたら成功。
 •  マイク/スピーカーつなげて音声テストも。
 
-2.  Raspberry PiにGitインストール & SSHキー設定：
-sudo apt install git -y
-
-# SSHキー生成（パスフレーズは空でOK）
-ssh-keygen -t ed25519 -C "your_email@example.com"
-# Enter連打でデフォルト保存
-
-# 公開キー表示してコピー
-cat ~/.ssh/id_ed25519.pub
-
-
 ## インストール
 1. Ollamaインストール: curl -fsSL https://ollama.com/install.sh | (sh
 2. モデルダウンロード: ollama pull gemma2:2b
