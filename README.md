@@ -41,6 +41,7 @@ sudo apt install python3-pip python3-tk python3-venv -y
 pip3 install ollama speechrecognition pyaudio pyttsx3
 
 •  pyaudioエラー時は: sudo apt install portaudio19-dev -y してから再インストール。
+
 ステップ4: プロトタイプコード作成 & 実行（10〜20分）
 1.  フォルダ作成：
 mkdir ai_blank_terminal
