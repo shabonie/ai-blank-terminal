@@ -5,13 +5,12 @@ Raspberry Piで動く「白紙AI端末」プロトタイプ。
 完全オフライン・ローカル（Ollama使用）で、OS/アプリ不要のAI-firstデバイス実験です。
 OSそのものをAIにした端末(完全オフライン・ローカルでアプリをプロンプト生成するAI端末プロトタイプ。アプリ/OS不要のAI-firstデバイス実験)
 
-Raspberry Piでプロトタイプ作成 → GitHubアップロード手順
+Raspberry Piでプロトタイプ作成
 準備するもの（事前調達）
 •  Raspberry Pi：Pi 5（8GB RAM以上推奨、Pi 4でも動くけど遅め）。Pi Zeroは重すぎて厳しい。
 •  MicroSDカード（32GB以上、Class 10以上）。
 •  電源、HDMIケーブル、キーボード/マウス（最初だけ）。
 •  ネット接続（Wi-Fi or 有線）。
-•  PC（Windows/Mac/Linux）でGitHubアカウント（無料で作れる）。
 
 ステップ1: Raspberry Piのセットアップ（30分〜1時間）
 1.  Raspberry Pi Imager をPCにダウンロード（公式サイト: raspberrypi.com/software）。
@@ -61,15 +60,6 @@ python3 ai_blank_terminal.py
 GUI出て、プロンプト入力して生成できたら成功。
 •  マイク/スピーカーつなげて音声テストも。
 
-ステップ5: GitHubにアップロード（初心者向け手順、20〜40分）
-1.  GitHubでリポジトリ作成（PCのブラウザで）：
-	•  github.com ログイン。
-	•  右上「+」→ New repository。
-	•  Repository name: ai-blank-terminal（例）。
-	•  Description: 「Raspberry Piで動く白紙AI端末プロトタイプ（プロンプトでアプリ生成）」
-	•  Public（誰でも見れる） or Private。
-	•  README追加せず → Create repository。
-
 2.  Raspberry PiにGitインストール & SSHキー設定：
 sudo apt install git -y
 
@@ -81,40 +71,6 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 cat ~/.ssh/id_ed25519.pub
 
 
-3.  GitHubにSSHキー登録（ブラウザで）：
-	•  GitHub → Settings → SSH and GPG keys → New SSH key。
-	•  Title: Raspberry Pi。
-	•  Keyにコピーした文字列貼り付け → Add SSH key。
-4.  ローカルからGitHubにプッシュ（ai_blank_terminalフォルダ内）：
-
-
-git init
-git add .
-git commit -m "Initial commit: 白紙AI端末プロトタイプ"
-
-# リモート追加（GitHubリポジトリのSSH URLをコピーして貼り付け）
-git remote add origin git@github.com:sh921289/ai-blank-terminal.git
-# ↑ URLはGitHubリポジトリページの緑のCodeボタン → SSHタブからコピー
-
-git branch -M main
-git push -u origin main
-
-
-•  初回は「Are you sure you want to continue connecting?」でyes。
-•  成功したらGitHubページリロード → コードが見える。
-ステップ6: README.md追加（重要）
-GitHubページで「Add file」→「Create new file」→ 名前: README.md
-内容例（Markdownで）：
-# AI Blank Terminal Prototype
-
-Raspberry Piで動く「白紙AI端末」プロトタイプ。  
-最初は何も入ってない状態から、音声/テキストプロンプトでAIが電話機能やアプリをゼロから生成・実行。
-
-## 特徴
-- Ollama + gemma2:2b でローカル完全オフライン
-- Tkinter GUI + 音声入力対応
-- アプリ/OS不要のAI-firstデバイス実験
-
 ## インストール
 1. Ollamaインストール: curl -fsSL https://ollama.com/install.sh | (sh
 2. モデルダウンロード: ollama pull gemma2:2b
@@ -124,8 +80,6 @@ Raspberry Piで動く「白紙AI端末」プロトタイプ。
 ## 注意
 - ollama serve & を先に起動しておく
 - Piの熱対策にファンおすすめ
-
-## デモ動画（任意で後で追加）
 
 Commit new file。
 追加のTips（そのまま使える）
@@ -175,10 +129,6 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 arecord -l    # マイクデバイス確認
 aplay -l      # スピーカーデバイス確認
 をしてデバイスがあるか確認しておくと後で楽
-6.  GitリモートURLの例
-git remote add origin git@github.com:sh/ai-blank-terminal.git
-※shは例なので好きなユーザー名に変更。
-
 
 上記のポイント（特にモデルをllama3.2:3bかqwen2.5:3bに変える＋サービス化＋swap＋ファン）を反映すれば、2026年現在でもかなりイケてるプロトタイプになる。
 
